@@ -49,4 +49,7 @@ if __name__ == "__main__":
                             aws_session_token=AWS_SESSION_TOKEN)
     client = session.client('secretsmanager')
     get_secret_value_response = read_sm_cert(client, secret_name)
-    print(get_secret_value_response["SecretString"])
+    secret_value_data = json.dumps(get_secret_value_response)
+    jsonFile = open("sm_data.json", "w")
+    jsonFile.write(secret_value_data)
+    jsonFile.close()
