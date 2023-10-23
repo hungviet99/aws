@@ -5,21 +5,13 @@ terraform {
       version = ">= 4.16"
     }
   }
-  backend "s3" {
-    # Replace this with your bucket name!
-    bucket = var.s3_tfstate
-    key    = "terraform.tfstate"
-    region = var.s3_tfstate_region
-    # Replace this with your DynamoDB table name!
-    dynamodb_table = var.tfstate_dynamodb
-  }
+  required_version = ">= 1.0.0"
 }
 
 provider "aws" {
   region  = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
-
+  access_key = var.credentials.access_key
+  secret_key = var.credentials.secret_key
 }
 
 resource "aws_s3_bucket" "terraform_s3" {

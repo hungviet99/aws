@@ -1,11 +1,9 @@
-variable "access_key" {
-  description = ""
-  default     = ""
-}
-
-variable "secret_key" {
-  description = ""
-  default     = ""
+variable "credentials" {
+    type = object({
+        access_key = string
+        secret_key = string
+    })
+    sensitive = true
 }
 
 variable "region" {
@@ -18,17 +16,3 @@ variable "bucket_name" {
   default = ""
 }
 
-variable "s3_tfstate" {
-  type    = string
-  default = ""
-}
-
-variable "s3_tfstate_region" {
-  type    = string
-  default = ""
-}
-
-variable "tfstate_dynamodb" {
-  type    = string
-  default = ""
-}

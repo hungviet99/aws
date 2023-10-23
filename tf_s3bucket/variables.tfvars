@@ -1,7 +1,0 @@
-access_key              = ""
-secret_key              = ""
-region                  = "us-east-1"
-bucket_name             = ""
-s3_tfstate              = ""
-s3_tfstate              = ""
-s3_tfstate              = ""
