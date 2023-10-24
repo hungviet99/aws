@@ -1,0 +1,29 @@
+apiVersion: score.sh/v1b1
+
+metadata:
+  name: web-app
+
+service:
+  ports:
+    www:
+      port: 80
+      targetPort: 8080
+
+containers:
+  web-app:
+    image: nginx:stable-alpine
+    variables:
+      S3_BUCKET_NAME: ${resources.asset.bucket}
+    files:
+      - target: /usr/share/nginx/html/index.html
+        mode: "644"
+        content: |
+                    ${resources.env.MESSAGE}
+
+resources:
+  asset:
+    type: s3
+    properties:
+      bucket:
+  env:
+    type: environment
