@@ -1,9 +1,9 @@
 output "region" {
-  value = module.aws_s3_bucket.s3_bucket_region
+  value = var.region
 }
 
 output "bucket" {
-  value = module.aws_s3_bucket.s3_bucket_bucket_domain_name
+  value = aws_s3_bucket.terraform_s3.bucket
 }
 
 output "aws_access_key_id" {
